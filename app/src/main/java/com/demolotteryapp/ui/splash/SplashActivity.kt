@@ -7,10 +7,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.demolotteryapp.R
-import com.demolotteryapp.base.BaseActivity
-import com.demolotteryapp.data.model.LotteryInfo
+import com.demolotteryapp.ui.base.BaseActivity
+import com.demolotteryapp.data.local.db.entity.LotteryEntity
 import com.demolotteryapp.databinding.SplashActivityBinding
-import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity() {
@@ -33,7 +32,6 @@ class SplashActivity : BaseActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         initialiseView()
@@ -60,7 +58,7 @@ class SplashActivity : BaseActivity() {
                 binding.progressBar.visibility = View.VISIBLE
             } else if (resource.data != null) {
                 binding.progressBar.visibility = View.INVISIBLE
-                binding.tvText.text = "Drnow:" +  (resource.data as LotteryInfo).drwNo.toString()
+                binding.tvText.text = "Drnow:" +  (resource.data as LotteryEntity).drwNo.toString()
             } else {
                 //handleErrorResponse()
             }
@@ -69,9 +67,13 @@ class SplashActivity : BaseActivity() {
     }
 
     fun callApi(view: View){
+
+        //val isNetwork = NetworkUtils.isInternetAvailable(this)
+        //AppLogger.e("TAG","=== NetWork:" + isNetwork);
+
         binding.tvText.text = "Start calling api"
 
-        /* Fetch movies list  */
-        lotteryViewModel.loadLotteryInfo(1)
+        /* Fetch Lottery  */
+        lotteryViewModel.downloadLotteryData()
     }
 }

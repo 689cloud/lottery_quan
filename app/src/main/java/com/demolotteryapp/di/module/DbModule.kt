@@ -1,17 +1,27 @@
 package com.demolotteryapp.di.module
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
-import com.demolotteryapp.data.AppDatabase
-import com.demolotteryapp.data.dao.LotteryDao
+import com.demolotteryapp.data.local.db.AppDatabase
+import com.demolotteryapp.data.local.db.dao.LotteryDao
 import dagger.Module
 import dagger.Provides
 
 import javax.inject.Singleton
+import android.content.SharedPreferences
+
+
 
 // Local Db Providers
 @Module
 class DbModule {
+
+    @Provides
+    @Singleton
+    internal fun provideSharedPreference(application: Application): SharedPreferences {
+        return application.getSharedPreferences("LotteryDemoApp-SharedPrefs", Context.MODE_PRIVATE)
+    }
 
     /*
      * The method returns the Database object
@@ -25,6 +35,7 @@ class DbModule {
     }
 
 
+
     /*
      * We need the LotteryDao module.
      * For this, We need the AppDatabase object
@@ -33,6 +44,6 @@ class DbModule {
     @Provides
     @Singleton
     internal fun provideLotteryDao(appDatabase: AppDatabase): LotteryDao {
-        return appDatabase.lotteryInfoDao()
+        return appDatabase.lotteryDao()
     }
 }

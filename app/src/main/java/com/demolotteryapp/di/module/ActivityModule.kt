@@ -1,6 +1,6 @@
 package com.an.dagger.di.module
 
-import com.demolotteryapp.ui.main.MainActivity
+import com.demolotteryapp.ui.base.BaseFragment
 import com.demolotteryapp.ui.splash.SplashActivity
 import com.demolotteryapp.ui.welcome.WelcomeActivity
 import dagger.Module
@@ -14,4 +14,5 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector()
     abstract fun contributeWelcomeActivity(): WelcomeActivity
+
 }

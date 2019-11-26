@@ -1,9 +1,8 @@
 package com.demolotteryapp.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.demolotteryapp.R
-import com.demolotteryapp.base.BaseActivity
+import com.demolotteryapp.ui.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 

@@ -1,10 +1,9 @@
-package com.demolotteryapp.data.model
+package com.demolotteryapp.data.local.db.entity
 
 import androidx.room.Entity
-import com.google.gson.annotations.SerializedName
 
 @Entity(primaryKeys = ["drwNo"])
-data class LotteryInfo (
+data class LotteryEntity (
     val totSellamnt: Long,
     val returnValue: String,
     val drwNoDate: String,

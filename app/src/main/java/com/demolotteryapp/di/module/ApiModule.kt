@@ -1,7 +1,7 @@
 package com.demolotteryapp.di.module
 
 import android.app.Application
-import com.demolotteryapp.data.api_service.LotteryApiService
+import com.demolotteryapp.data.remote.api.LotteryApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -55,8 +55,8 @@ class ApiModule {
         val httpClient = OkHttpClient.Builder()
         httpClient.cache(cache)
         httpClient.addInterceptor(logging)
-        httpClient.connectTimeout(45, TimeUnit.SECONDS)
-        httpClient.readTimeout(45, TimeUnit.SECONDS)
+        httpClient.connectTimeout(3, TimeUnit.MINUTES)
+        httpClient.readTimeout(3, TimeUnit.MINUTES)
         return httpClient.build()
     }
 
@@ -77,7 +77,7 @@ class ApiModule {
 
 
     /*
-     * We need the MovieApiService module.
+     * We need the LotteryApiService module.
      * For this, We need the Retrofit object, Gson, Cache and OkHttpClient .
      * So we will define the providers for these objects here in this module.
      *

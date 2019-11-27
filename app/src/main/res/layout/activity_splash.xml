@@ -2,35 +2,57 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data class="SplashActivityBinding" />
+    <data class="SplashActivityBinding">
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.demolotteryapp.ui.splash.SplashViewModel" />
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-
-        <ProgressBar
-            android:visibility="gone"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="callApi"
-            android:text="Call API" />
-
         <TextView
             android:id="@+id/tv_text"
-            android:text="data"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/progress_bar"
-            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Splash Screen" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/pb_loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}" />
+
+        <TextView
+            android:id="@+id/tv_downloading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pb_loading"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/app_margin"
+            android:text="@string/downloading_data"
+            android:textSize="@dimen/splash_text_size"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}" />
+
+        <TextView
+            android:id="@+id/tv_pls_wait"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_downloading"
+            android:layout_centerHorizontal="true"
+            android:text="@string/pls_wait"
+            android:textSize="@dimen/splash_text_size"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}" />
+
+
     </RelativeLayout>
 </layout>

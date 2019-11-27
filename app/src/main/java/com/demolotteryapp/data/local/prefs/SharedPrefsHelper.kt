@@ -11,15 +11,25 @@ class SharedPrefsHelper(private val mSharedPreferences: SharedPreferences) : IPr
 
         /** To save first time launch the app */
         var PREF_KEY_FIRST_TIME = "first_time"
+
+        /** To check the lottery data was downloaded success or not */
+        var PREF_KEY_DOWNLOAD_LOTTERY_DATA = "download_lottery_data"
     }
 
+    override fun setDownloadLotteryDataSuccess(success: Boolean) {
+        put(PREF_KEY_DOWNLOAD_LOTTERY_DATA, success)
+    }
+
+    override fun getDownloadLotteryDataSuccess(): Boolean {
+        return get(PREF_KEY_DOWNLOAD_LOTTERY_DATA, true)
+    }
 
     override fun setFirstTime(firstTime: Boolean) {
-        put(PREF_KEY_FIRST_TIME,firstTime)
+        put(PREF_KEY_FIRST_TIME, firstTime)
     }
 
     override fun getFirstTime(): Boolean {
-        return get(PREF_KEY_FIRST_TIME,true)
+        return get(PREF_KEY_FIRST_TIME, true)
     }
 
     fun put(key: String, value: String) {

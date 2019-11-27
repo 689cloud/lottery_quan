@@ -1,6 +1,8 @@
 package com.demolotteryapp.ui.splash
 
-interface SplashNavigator {
+import com.demolotteryapp.ui.base.BaseNavigator
+
+interface SplashNavigator : BaseNavigator{
     fun openWelcomeActivity()
     fun openMainActivity()
 }

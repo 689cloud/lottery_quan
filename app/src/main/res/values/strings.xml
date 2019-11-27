@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DemoLotteryApp</string>
+    <string name="downloading_data">Downloading data.</string>
+    <string name="pls_wait">Please wait!</string>
 </resources>

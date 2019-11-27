@@ -34,5 +34,9 @@ class Resource<T> private constructor(val status: Status, val data: T?, val mess
         fun <T> loading(data: T?): Resource<T> {
             return Resource(LOADING, data, null)
         }
+
+        fun <T> loading(): Resource<T> {
+            return Resource(LOADING, null, null)
+        }
     }
 }

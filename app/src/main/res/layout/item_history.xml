@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2019/12/12"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="20dp"/>
+    <TextView
+        android:id="@+id/tv1"
+        style="@style/itemLottery" />
+    <TextView
+        android:id="@+id/tv2"
+        style="@style/itemLottery" />
+    <TextView
+        android:id="@+id/tv3"
+        style="@style/itemLottery" />
+    <TextView
+        android:id="@+id/tv4"
+        style="@style/itemLottery" />
+    <TextView
+        android:id="@+id/tv5"
+        style="@style/itemLottery" />
+    <TextView
+        android:id="@+id/tv6"
+        style="@style/itemLottery" />
+    <View
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"/>
+    <TextView
+        android:id="@+id/tvBonus"
+        style="@style/itemLottery"
+        android:text="abc"
+        android:layout_marginRight="@dimen/app_margin"
+        android:textColor="@color/colorPrimary" />
+
+</LinearLayout>

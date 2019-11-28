@@ -8,6 +8,7 @@ import com.demolotteryapp.data.remote.api.LotteryApiService
 import com.demolotteryapp.data.repository.LotteryRepository
 import com.demolotteryapp.ui.base.BaseNavigator
 import com.demolotteryapp.ui.base.BaseViewModel
+import com.demolotteryapp.utils.AppConstants
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
@@ -39,9 +40,9 @@ class SplashViewModel @Inject constructor(
      */
     fun downloadLotteryData() {
         setIsLoading(true)
-        compositeDisposable.add(lotteryRepository.downloadLotteryData().subscribe({
+        compositeDisposable.add(lotteryRepository.downloadLotteryData(AppConstants.NUM_API_DOWNLOAD).subscribe({
             openWelcomeScreen(true)
-        }) {
+        }){
             openWelcomeScreen(false)
         })
     }

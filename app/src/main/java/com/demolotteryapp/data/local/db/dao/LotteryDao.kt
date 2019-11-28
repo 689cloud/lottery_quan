@@ -19,18 +19,11 @@ interface LotteryDao {
     @Query("SELECT * FROM LotteryEntity WHERE drwNo=:drwNo ")
     fun getLotteryBydrwNo(drwNo: Int): Single<LotteryEntity>
 
-    /* Method to fetch the LotteryInfos stored locally */
+    /* Method to fetch the LotteryEntity stored locally */
     @Query("SELECT * FROM LotteryEntity")
     fun getAllLotteries(): Single<List<LotteryEntity>>
 
-    /* Method to insert the Lottery fetched from api
-     * to room */
-    //@Insert(onConflict = OnConflictStrategy.REPLACE)
-    //fun insertLotteries(lotteryEntities: List<LotteryEntity>): LongArray
-
-    // @Insert(onConflict = OnConflictStrategy.REPLACE)
-    // fun insertLottery(lotteryInfos: LotteryEntity): Long
-    /* Method to get LotteryEntity by drwNo */
-    //@Query("SELECT * FROM LotteryEntity WHERE drwNo=:drwNo ")
-    //fun getLotteryBydrwNo(drwNo: Int): LotteryEntity
+    /* Method to get list lotteries which have drwNo column <= @drwNo */
+    @Query("SELECT * FROM LotteryEntity WHERE drwNo<=:drwNo")
+    fun getListLotteries(drwNo: Int): Single<List<LotteryEntity>>
 }

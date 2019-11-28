@@ -39,7 +39,7 @@
             android:layout_below="@+id/pb_loading"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/app_margin"
-            android:text="@string/downloading_data"
+            android:text="@string/splash_downloading_data"
             android:textSize="@dimen/splash_text_size"
             android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}" />
 
@@ -49,9 +49,18 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_downloading"
             android:layout_centerHorizontal="true"
-            android:text="@string/pls_wait"
+            android:text="@string/splash_pls_wait"
             android:textSize="@dimen/splash_text_size"
             android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_text"
+            android:layout_marginTop="80dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@mipmap/ic_launcher" />
 
 
     </RelativeLayout>

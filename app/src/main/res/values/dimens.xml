@@ -2,5 +2,9 @@
     <dimen name="app_padding">15dp</dimen>
     <dimen name="app_margin">15dp</dimen>
 
+    <dimen name="app_text_normal">15dp</dimen>
+    <dimen name="app_text_medium">18sp</dimen>
+    <dimen name="app_text_big">22sp</dimen>
+
     <dimen name="splash_text_size">18sp</dimen>
 </resources>

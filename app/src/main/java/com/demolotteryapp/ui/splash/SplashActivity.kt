@@ -31,9 +31,4 @@ class SplashActivity : BaseActivity(), SplashNavigator {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
-
-    // Get list loto number
-    // Log.e("TAG", "LIST:" + (1..45).shuffled().take(6))
-
-
 }

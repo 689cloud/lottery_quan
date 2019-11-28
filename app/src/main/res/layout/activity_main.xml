@@ -1,36 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <data class="MainActivityBinding" />
+    <data class="MainActivityBinding">
 
-    <RelativeLayout
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.demolotteryapp.ui.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_history"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="History" />
-
-        <Button
-            android:id="@+id/btn_trending"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="50dp"
-            android:text="Trending" />
-
         <TextView
             android:id="@+id/tv_text"
-            android:text="Main Screen"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/app_margin"
+            android:text="Main Screen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+        <EditText
+            android:id="@+id/edtEvent"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/app_margin"
+            android:hint="@string/main_event_number"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_text" />
+
+
+        <ProgressBar
+            android:id="@+id/pb_loading_event"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/edtEvent"
+            app:layout_constraintStart_toEndOf="@+id/edtEvent"
+            app:layout_constraintTop_toTopOf="@+id/edtEvent" />
+
+
+        <TextView
+            android:id="@+id/tvLottery"
+            style="@style/textLottery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.lotteryInfo.toString()}"
+            app:layout_constraintBottom_toBottomOf="@+id/edtEvent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pb_loading_event"
+            app:layout_constraintTop_toTopOf="@+id/edtEvent" />
+
+        <Button
+            android:id="@+id/btHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginBottom="30dp"
+            android:onClick="openHistoryActivity"
+            android:text="History"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btTrending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="30dp"
+            android:onClick="openTrendingActivity"
+            android:text="Trending"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btGenerate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin"
+            android:layout_marginTop="30dp"
+            android:onClick="@{() -> viewModel.generateRandomLotteryNumber()}"
+            android:text="Generate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtEvent" />
+
+        <Button
+            android:id="@+id/btResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_margin"
+            android:layout_marginTop="30dp"
+            android:onClick="@{() -> viewModel.checkWinner()}"
+            android:text="Result"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btGenerate" />
+
+        <TextView
+            android:id="@+id/tvGenerate"
+            style="@style/textLottery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.randomLotteryNumber.toString()}"
+            app:layout_constraintBottom_toBottomOf="@+id/btGenerate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btGenerate"
+            app:layout_constraintTop_toTopOf="@+id/btGenerate" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            style="@style/textLottery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.winnerType.message}"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/btResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btResult"
+            app:layout_constraintTop_toTopOf="@+id/btResult" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

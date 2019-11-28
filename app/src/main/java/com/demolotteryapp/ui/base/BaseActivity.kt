@@ -43,7 +43,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseNavigator, HasAndroidInje
      * Override for set binding variable
      * @return variable id
      */
-    fun getBindingVariable(): Int{
+    fun getBindingVariable(): Int {
         return BR.viewModel
     }
 
@@ -68,6 +68,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseNavigator, HasAndroidInje
         // performDataBinding
         mViewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
         mViewModel = getViewModel()
+        mViewDataBinding.setLifecycleOwner(this)
         mViewDataBinding.setVariable(getBindingVariable(), mViewModel)
         mViewDataBinding.executePendingBindings()
 
@@ -75,6 +76,9 @@ abstract class BaseActivity : AppCompatActivity(), BaseNavigator, HasAndroidInje
         mViewModel.renderData(this)
     }
 
+    fun getViewDataBinding(): ViewDataBinding {
+        return mViewDataBinding
+    }
 
     @TargetApi(Build.VERSION_CODES.M)
     fun requestPermissionsSafely(permissions: Array<String>, requestCode: Int) {

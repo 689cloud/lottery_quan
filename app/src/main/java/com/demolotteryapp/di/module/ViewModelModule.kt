@@ -4,8 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.an.dagger.factory.ViewModelFactory
 import com.demolotteryapp.di.ViewModelKey
+import com.demolotteryapp.ui.deeplink_search.DeeplinkSearchViewModel
+import com.demolotteryapp.ui.history.HistoryViewModel
 import com.demolotteryapp.ui.main.MainViewModel
 import com.demolotteryapp.ui.splash.SplashViewModel
+import com.demolotteryapp.ui.trending.TrendingViewModel
 import com.demolotteryapp.ui.welcome.WelcomeViewModel
 import dagger.Binds
 import dagger.Module
@@ -41,4 +44,19 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     protected abstract fun mainViewModel(mainViewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(HistoryViewModel::class)
+    protected abstract fun historyViewModel(historyViewModel: HistoryViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TrendingViewModel::class)
+    protected abstract fun trendingViewModel(trendingViewModel: TrendingViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DeeplinkSearchViewModel::class)
+    protected abstract fun deeplinkSearchViewModel(deeplinkSearchViewModel: DeeplinkSearchViewModel): ViewModel
 }

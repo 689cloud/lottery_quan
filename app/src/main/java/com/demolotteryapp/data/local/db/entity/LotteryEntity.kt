@@ -3,7 +3,7 @@ package com.demolotteryapp.data.local.db.entity
 import androidx.room.Entity
 
 @Entity(primaryKeys = ["drwNo"])
-data class LotteryEntity (
+data class LotteryEntity(
     val totSellamnt: Long,
     val returnValue: String,
     val drwNoDate: String,
@@ -18,7 +18,13 @@ data class LotteryEntity (
     val drwtNo2: Int,
     val drwtNo3: Int,
     val drwtNo1: Int
-)
+) {
+    fun toList() = listOf(drwtNo1,drwtNo2,drwtNo3,drwtNo4,drwtNo5,drwtNo6)
+    fun toListTrend() = listOf(drwtNo1,drwtNo2,drwtNo3,drwtNo4,drwtNo5,drwtNo6,bnusNo)
+    override fun toString(): String {
+        return if (returnValue.equals("fail")) "N/A" else "${drwtNo1}:${drwtNo2}:${drwtNo3}:${drwtNo4}:${drwtNo5}:${drwtNo6} - ${bnusNo}"
+    }
+}
 
 /*
 

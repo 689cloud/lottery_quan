@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">DemoLotteryApp</string>
-    <string name="downloading_data">Downloading data.</string>
-    <string name="pls_wait">Please wait!</string>
+
+    <!-- Splash screen -->
+    <string name="splash_downloading_data">Downloading data.</string>
+    <string name="splash_pls_wait">Please wait!</string>
+
+    <!-- Main screen -->
+    <string name="main_event_number"><font size="12">Event Number</font></string>
 </resources>

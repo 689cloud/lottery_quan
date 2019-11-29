@@ -16,3 +16,6 @@ Implements MVVM architecture using Dagger2, Room, RxJava and Retrofit2
 
 ## Support offline mode?
 Yes, App can work offline.
+
+## Deeplink test
+Open this link on device browser : http://bom.to/xuGj5N
